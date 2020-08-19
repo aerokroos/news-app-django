@@ -1,0 +1,8 @@
+{% extends 'news/main.html' %}
+
+{% block content %}
+
+{% for new in news %}
+<h1>{{new.title}}</h1>
+{% endfor %}
+{% endblock %}
