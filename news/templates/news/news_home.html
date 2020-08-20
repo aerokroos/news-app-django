@@ -3,6 +3,19 @@
 {% block content %}
 
 {% for new in object_list %}
-    <h1>{{ new.title }}</h1>
+    <div class="container">
+            <h1>{{ new.title }}</h1>
+            <h3>{{ new.sub_title }}</h3>
+            <p class="body-article">{{ new.body }}</p>
+            <br>
+            <p>by {{ new.reporter }}</p>
+            <p> Date: {{ new.pub_date }}</p>
+        
+    </div>
 {% endfor %}
+<style>
+    .body-article {
+        text-align: justify;
+    }
+</style>
 {% endblock %}
