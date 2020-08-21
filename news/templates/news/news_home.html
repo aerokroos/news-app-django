@@ -2,20 +2,57 @@
 
 {% block content %}
 
-{% for new in object_list %}
-    <div class="container">
-            <h1>{{ new.title }}</h1>
-            <h3>{{ new.sub_title }}</h3>
-            <p class="body-article">{{ new.body }}</p>
-            <br>
-            <p>by {{ new.reporter }}</p>
-            <p> Date: {{ new.pub_date }}</p>
-        
+{% for article in object_list %}
+    <br>
+    <div class="article-box">
+        <div class="info-container">
+            <a class="article-title" href="#">{{ article.title }}</a>
+            <p class="sub-title-article">{{ article.sub_title }}</p>
+            {% if article.image %}
+            <p><img src="{{article.image.url}}" class="article-img"></p>
+            {% else %}
+                <p></p>
+            {% endif %}
+            <p >{{ article.body }}</p>
+            by  <a href="#"><strong>{{ article.reporter }}</strong></a>
+            <p>Date: {{ article.pub_date }}</p>
+            <p>Section:<a href="#"><strong> {{ article.section }}</strong></a></p>
+        </div>
     </div>
 {% endfor %}
 <style>
-    .body-article {
+    .article-box {
+        border: 5px solid whitesmoke;
+        width: 750px;
+        margin-left: 3em;
+        background-color: gainsboro;
+    }
+    .info-container {
+        margin-right: 1em;
+        margin-left: 1em;
         text-align: justify;
     }
+    .article-title {
+        color: black;
+        font-size:32px
+    }
+    .article-title:link {
+        text-decoration: none;
+    }
+    .article-title:hover {
+        color: grey;
+    }
+    .sub-title-article {
+        font-size: 20px;
+        font-style: italic;
+    }
+    .article-body {
+        font-size: 15px;
+    }
+    .article-img {
+        width: 710px;
+        height: 400px
+    }
+    
 </style>
 {% endblock %}
