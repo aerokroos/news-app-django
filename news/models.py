@@ -5,8 +5,13 @@ class Reporter(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-
+    image = models.ImageField(upload_to='reporters/',null=True, blank=True)
+    
     def __str__(self):
+        return self.first_name.title() + " " + self.last_name.title()
+    
+    @property
+    def full_name(self):
         full_name = self.first_name.title() + " " + self.last_name.title()
         return full_name
 
@@ -28,8 +33,4 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
-    @property
-    def image_url(self):
-        if self.image:
-            return self.image.url
-        return '#'
+    

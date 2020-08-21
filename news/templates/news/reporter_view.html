@@ -1,0 +1,12 @@
+{% extends 'news/main.html' %}
+
+{% block content %}
+{% for reporter in object_list %}
+    <p><img src="{{reporter.image.url}}" class="article-img"></p>
+    <p>{{ reporter.full_name }}</p>
+    <p>{{ reporter.email }}</p>
+    
+{% endfor %}
+
+
+{% endblock content %}

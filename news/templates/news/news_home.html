@@ -6,7 +6,7 @@
     <br>
     <div class="article-box">
         <div class="info-container">
-            <a class="article-title" href="#">{{ article.title }}</a>
+            <a class="article-title" href="">{{ article.title }}</a>
             <p class="sub-title-article">{{ article.sub_title }}</p>
             {% if article.image %}
             <p><img src="{{article.image.url}}" class="article-img"></p>
@@ -14,7 +14,7 @@
                 <p></p>
             {% endif %}
             <p >{{ article.body }}</p>
-            by  <a href="#"><strong>{{ article.reporter }}</strong></a>
+            by  <a href="{% url 'reporter_view' article.reporter.pk %}"><strong>{{ article.reporter }}</strong></a>
             <p>Date: {{ article.pub_date }}</p>
             <p>Section:<a href="#"><strong> {{ article.section }}</strong></a></p>
         </div>
