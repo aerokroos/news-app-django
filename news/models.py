@@ -6,6 +6,8 @@ class Reporter(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     image = models.ImageField(upload_to='reporters/',null=True, blank=True)
+    website = models.CharField(max_length=100)
+    bio = models.TextField()
     
     def __str__(self):
         return self.first_name.title() + " " + self.last_name.title()

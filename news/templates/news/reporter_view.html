@@ -2,11 +2,44 @@
 
 {% block content %}
 {% for reporter in object_list %}
-    <p><img src="{{reporter.image.url}}" class="article-img"></p>
-    <p>{{ reporter.full_name }}</p>
-    <p>{{ reporter.email }}</p>
-    
+
+<div class="profile-container">
+    <div class="row">
+        <div class="col-sm">
+            <img class="card-img-top" src="{{reporter.image.url}}" alt="Card image cap">
+            <div class="bio-box-left">
+                <h5 >{{ reporter.full_name }}</h5>
+                <a href="{{ reporter.website}}">Website</a>
+                <p><a href="{{ reporter.email }}">Email</a></p>
+            </div>
+        </div>
+        
+        <div class="col-sm">
+            <div class="bio-box">
+                <h1>Bio</h1>
+                <p>{{ reporter.bio }}</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endfor %}
 
+<style>
+    .profile-container {
+        border: 5px solid whitesmoke;
+        width: 750px;
+        margin-left: 7em;
+        margin-top: 2em;
+    }
+    .bio-box {
+        text-align: justify;
+        margin-right: 1em;
+    }
+    .bio-box-left {
+        margin-left: 1em;
+        margin-top: 1em;
+    }
+</style>
 
-{% endblock content %}
+
+{% endblock content %}  
