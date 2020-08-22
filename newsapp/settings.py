@@ -72,6 +72,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'newsapp.wsgi.application'
 
 
+
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -86,6 +88,7 @@ DATABASES = {
     }
 }
 
+#AUTH_USER_MODEL = 'news.User'
 
 
 # Password validation

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Reporter(models.Model):
@@ -8,13 +9,8 @@ class Reporter(models.Model):
     website = models.CharField(max_length=100)
     bio = models.TextField()
 
-    # def __str__(self):
-    #     return self.first_name.title() + " " + self.last_name.title()
-    
-    # @property
-    # def full_name(self):
-    #     full_name = self.first_name.title() + " " + self.last_name.title()
-    #     return full_name
+    def __str__(self):
+        return self.user.username
 
 class Section(models.Model):
     name_section = models.CharField(max_length=30)
@@ -33,5 +29,12 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    
+# class User(AbstractUser):
+#     pass
+
+
+
+
 
     
