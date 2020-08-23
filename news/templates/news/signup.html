@@ -3,13 +3,20 @@
 {% block content %}
 <div class="user-register-card">
     <div class="row">
-        <div class="col-md-5 col-md-offset-2"">
-            <div class="info">Hello</div>
+        <div class="col-md-6 col-md-offset-2"">
+            <div class="info">
+                <p class="title">Information</p>
+                <p class="info-body">"qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem".
+                    "Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure".  
+                </p>
+            </div>
         </div>
-        <div class="col-md-5 col-md-offset-2"">
+        <div class="col-md-6 col-md-offset-2"">
             <div class="register-form">
                 <form method="POST">
                 {% csrf_token %}
+                <p>Signup</p>
+
                 First Name:
                 <br>
                 {{ form.first_name }}
@@ -53,21 +60,35 @@
     .user-register-card {
         margin-left:12em;
         margin-top: 2em;
-        border-style: outset ;
-        border-color: black;
+        border-style: solid ;
+        border-color: #7c7c84;
         margin-right: 21em;
+        width: 1060px;
+        height: 500px;
     }
     .info {
-        background-color: yellow;
-        width: 300px;
-        height: 400px;
+        background-color: #f4c117;
+        width: 650px;
+        height: 493.5px;
     }
     .register-form {
-        margin-left: 1em;
+        margin-left: 9em;
+        font-size: 20px;
     }
     .confirm {
-        margin-top: 2em;
-        float: left;
+        margin-top: 0.5em;
+        float: right;
+        margin-right: 3.5em;
+    }
+    .title {
+        font-size: 30px;
+        padding: 1em;
+    }
+    .info-body {
+        font-size: 20px;
+        text-align: justify;
+        margin-right: 1em;
+        margin-left: 1em;
     }
 </style>
 {% endblock content %}

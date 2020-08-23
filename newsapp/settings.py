@@ -72,7 +72,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'newsapp.wsgi.application'
 
 
-
+LOGIN_REDIRECT_URL = 'news_home'
+LOGOUT_REDIRECT_URL = 'news_home'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

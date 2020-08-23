@@ -1,0 +1,43 @@
+{% extends 'news/main.html' %}
+
+{% block content %}
+<div class="login-form">
+<form method="post">
+    <h1>Login</h1>
+    {% csrf_token %}
+    Username:
+    <br>
+    {{form.username}}
+    <br>
+    Password:
+    <br>
+    {{form.password}}
+    <br>
+    <div class="confirm">
+        <button class="btn btn-success" type="submit">Login</button>
+    </div>
+</form>
+</div>    
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<style>
+    .login-form {
+        margin-left: 2em;
+        font-size: 20px;
+    }
+    .confirm {
+        margin-top: 1em;
+    }
+    
+</style>
+
+{% endblock content %}
