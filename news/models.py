@@ -1,16 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Reporter(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    reporter = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='reporters/',null=True, blank=True)
     website = models.CharField(max_length=100)
     bio = models.TextField()
 
     def __str__(self):
-        return self.user.username
+        return self.reporter.username
+
+    def get_absolute_url(self):
+        return reverse(kwargs={'pk': self.pk})
 
 class Section(models.Model):
     name_section = models.CharField(max_length=30)
@@ -25,7 +30,7 @@ class Article(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
     reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(upload_to='articles/', null=True, blank=True)
 
     def __str__(self):
         return self.title

@@ -3,7 +3,7 @@ from django.views.generic import ListView, CreateView
 from .models import Article, Reporter, User
 from django.urls import reverse_lazy
 
-from .forms import RegisterForm
+from .forms import RegisterForm, ReporterForm
 
 # Create your views here.
 class NewsPageView(ListView):
@@ -17,6 +17,15 @@ class ReporterPageView(ListView):
 class SignupCreatePage(CreateView):
     form_class = RegisterForm
     template_name = 'news/signup.html'
-    succes_ulr = reverse_lazy('home')
-        
+    succes_url = reverse_lazy('news_home')
+
+class CreateReporterPageView(CreateView):
+    model = Reporter
+    form_class = ReporterForm
+    template_name = 'news/new_reporter.html'
+    succes_url = reverse_lazy('news_home')
+
+    def form_valid(self, form):
+        form.instance.reporter = self.request.user
+        return super().form_valid(form)
 
