@@ -1,6 +1,7 @@
+{% extends 'news/main.html' %}
 {% block content %}
-<form method="post">{% csrf_token %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Send message">
+    <button class="btn btn-success" type="submit">Register like Reporter</button>
 </form>
-{% endblock %}
+{% endblock content %}
