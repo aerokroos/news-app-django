@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 from .models import Article, Reporter, User
 from django.urls import reverse_lazy
 
-
-from .forms import RegisterForm, ReporterForm
+from .forms import RegisterForm, ReporterForm, ArticleForm
 
 # Create your views here.
 class NewsPageView(ListView):
@@ -18,7 +17,7 @@ class ReporterPageView(ListView):
 class SignupCreatePage(CreateView):
     form_class = RegisterForm
     template_name = 'news/signup.html'
-    succes_url = reverse_lazy('news_home')
+    succes_url = reverse_lazy('login')
 
 class CreateReporterPageView(CreateView):
     model = Reporter
@@ -26,12 +25,18 @@ class CreateReporterPageView(CreateView):
     template_name = 'news/new_reporter.html'
     success_url = reverse_lazy('news_home')
 
+class CreateArticlePageView(CreateView):
+    model = Article
+    form_class = ArticleForm
+    template_name = 'news/new_article.html'
+    success_url = reverse_lazy('news_home')
+
     def form_valid(self, form):
-        form.instance.reporter = self.request.user
+        form.instance.article_reporter = self.request.user
         return super().form_valid(form)
 
-    # def get_success_url(self):
-    #     return reverse_lazy('piece-detail', kwargs={'pk': self.kwargs['pk']})
+
+    
 
     
 

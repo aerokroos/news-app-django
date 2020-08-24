@@ -8,15 +8,15 @@
         <div class="col-sm">
             <img class="card-img-top" src="{{reporter.image.url}}" alt="Card image cap">
             <div class="bio-box-left">
-                <h5 >{{ reporter.user }}</h5>
+                <h5 >{{ reporter.full_name }}</h5>
                 <a href="{{ reporter.website}}">Website</a>
-                <p><a href="{{ reporter.email }}">Email</a></p>
+                <p><a href="mailto:{{ reporter.email }}">Email</a></p>
             </div>
         </div>
         
         <div class="col-sm">
             <div class="bio-box">
-                <h1>Bio</h1>
+                <h1>Biography</h1>
                 <p>{{ reporter.bio }}</p>
             </div>
         </div>

@@ -15,6 +15,9 @@ class Reporter(models.Model):
     def __str__(self):
         return self.reporter.username
 
+    def full_name(self):
+        return self.reporter.first_name + " " + self.reporter.last_name
+    
 class Section(models.Model):
     name_section = models.CharField(max_length=30)
 
@@ -27,14 +30,15 @@ class Article(models.Model):
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
-    reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
+    article_reporter = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='articles/', null=True, blank=True)
 
     def __str__(self):
         return self.title
+
     
-# class User(AbstractUser):
-#     pass
+    
+
 
 
 
