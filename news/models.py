@@ -37,9 +37,9 @@ class Article(models.Model):
         return self.title
 
 class Comment(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    comment = models.CharField(max_length=140)
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
+    body = models.CharField(max_length=140)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.comment

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView
-from .models import Article, Reporter, User
+from .models import Article, Reporter, User, Comment
 from django.urls import reverse_lazy
 
 from .forms import RegisterForm, ReporterForm, ArticleForm
@@ -9,7 +9,13 @@ from .forms import RegisterForm, ReporterForm, ArticleForm
 class NewsPageView(ListView):
     model = Article
     template_name = 'news/news_home.html'
+    context_object_name = 'articles'
     
+    def get_context_data(self, **kwargs):
+        comment = super(NewsPageView, self).get_context_data(**kwargs)
+        comment['comments'] = Comment.objects.all()
+        return comment
+
 class ReporterPageView(ListView):
     model = Reporter
     template_name = 'news/reporter_view.html'
