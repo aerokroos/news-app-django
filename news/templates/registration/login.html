@@ -2,21 +2,23 @@
 
 {% block content %}
 <div class="login-form">
-<form method="post">
-    <h1>Login</h1>
-    {% csrf_token %}
-    Username:
-    <br>
-    {{form.username}}
-    <br>
-    Password:
-    <br>
-    {{form.password}}
-    <br>
-    <div class="confirm">
-        <button class="btn btn-success" type="submit">Login</button>
+    <div class="form">
+    <form method="post">
+        <h1>Login</h1>
+        {% csrf_token %}
+        Username:
+        <br>
+        {{form.username}}
+        <br>
+        Password:
+        <br>
+        {{form.password}}
+        <br>
+        <div class="confirm">
+            <button class="btn btn-success" type="submit">Login</button>
+        </div>
+    </form>
     </div>
-</form>
 </div>    
 </div>
 <br>
@@ -24,18 +26,25 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
 <style>
     .login-form {
-        margin-left: 2em;
+        margin-left: 15em;
         font-size: 20px;
+        background-color: lightgrey;
+        width: 400px;
+        border: 10px solid gainsboro;
+        margin-top: 2em ;
     }
     .confirm {
         margin-top: 1em;
+    }
+    .form {
+        margin-left: 2em;
+        margin-right: 2em;
+        margin-top: 2em;
+        margin-bottom: 2em;
     }
     
 </style>
