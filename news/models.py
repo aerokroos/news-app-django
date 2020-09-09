@@ -38,11 +38,13 @@ class Article(models.Model):
 
 class Comment(models.Model):
     article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
-    body = models.CharField(max_length=140)
+    body = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.comment
+        return self.article_id.title
+
+    
 
     
 

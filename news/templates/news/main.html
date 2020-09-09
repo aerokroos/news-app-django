@@ -1,57 +1,81 @@
 {% load static %}
 <html>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-            <a class="navbar-brand" href="#">News app</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <body>
+    <!-- start banner -->
+    <div class="flex-box-banner">
+      
+      <div class="row">
+        <div class="col">
           
-            <div class="collapse navbar-collapse" id="navbarColor01">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-              </ul>
-              
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
-              </form>
+        </div>
+        <div class="col">
+          <a href="#" class="title">The News</a>
+        </div>
+        <div class="col">
+          
+        </div>
+      </div>
 
-              <div class="form-inline my-2 my-lg-0">
-                <ul class="navbar-nav mr-auto">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item active">
-                          <a class="nav-link" href="#">Username: {{user.first_name}} {{user.last_name}} <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Log out</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
+      <div class="row">
+        <div class="col">
+          
+        </div>
+        <div class="col">
+          <p>Today is {% now "jS F Y" %}</p>
+        </div>
+        <div class="col">
+          
+        </div>
+      </div>
 
-              
-            </div>
-          </nav>
+      <div class="row">
+        <div class="col">
+          
+        </div>
+        <div class="col">
+          <a href="#" class="fa fa-facebook" style="margin-right: 30px;">   Facebook</a>
+          <a href="#" class="fa fa-twitter" style="margin-right: 30px;">    Twitter</a>
+        </div>
+        <div class="col">
+          
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col">
+          
+        </div>
+        <div class="col">
+          <div id="sb-search" class="search">
+            <form>
+              <input class="search-input"  type="search" placeholder="Search..." aria-label="Search">
+              <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="col">
+          <div class="user-section">
+            {% if user.is_authenticated %}
+              <a href="#">{{user.first_name}} {{user.last_name}}</a>
+              <a href="{% url 'logout' %}">Log out</a>
+            {% else %}
+              <a href="{% url 'signup' %}" style="margin-right: 2em;">Signup</a>
+              <a href="{% url 'login' %}" style="margin-right: 2em;">Login</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
 
-          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </body>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 
     {% block content %}
 
@@ -119,6 +143,49 @@
       }
       .footer-copyright {
         color: white;
+      }
+      .flex-box-banner {
+        background-color: black;
+        color: white;
+        width: 100%;
+        height: 300px;
+        text-align: center;
+        display: flexbox;
+      }
+      .title {
+        font-size: 100px;
+        color: white;
+        text-decoration: none;
+      }
+      .title a:hover, a:link, a:visited, a:active {
+        text-decoration: none;
+        color: white;
+      }
+      .search-input {
+        top:0;
+        right:0;
+        border:0;
+        outline:0;
+        font-size: 30px;
+        background-color: black;
+        color: white;
+      }
+      .btn-search {
+        top:0;
+        right:0;
+        border:0;
+        outline: none;
+        font-size: 30px;
+        background-color: black;
+        color: white;
+        width: 50px;
+        height: 30px;
+        border: none;
+        outline: 0 !important;
+      }
+      .user-section {
+        font-size: 30px;
+        
       }
     </style>
 
