@@ -6,75 +6,90 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <body>
-    <!-- start banner -->
-    <div class="flex-box-banner">
-      
-      <div class="row">
-        <div class="col">
-          
-        </div>
-        <div class="col">
-          <a href="#" class="title">The News</a>
-        </div>
-        <div class="col">
-          
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-row">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="navbar-brand mr-auto" href="/">
+            <img src="//placehold.it/120x29?text=Logo" class="img-fluid" alt="Responsive image">
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Education<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Sports<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Politics<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Science<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Economy<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Entertaiment<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Arts<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Health<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Jobs<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Fashion<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Style<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Technology<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Weather<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Metro<span class="sr-only">(current)</span></a>
+        </li>
+        
 
-      <div class="row">
-        <div class="col">
-          
-        </div>
-        <div class="col">
-          <p>Today is {% now "jS F Y" %}</p>
-        </div>
-        <div class="col">
-          
-        </div>
-      </div>
+        <ul class="navbar-nav flex-row mr-lg-0">
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-3 mr-lg-0" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i><span class="caret"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  {% if user.is_authenticated %}
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                    {% else %}
+                      <a class="dropdown-item" href="{% url 'signup' %}">Signup</a>
+                      <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                    {% endif %}
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler ml-lg-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+      <!-- end list navs -->
+      </ul>
+  </nav>
 
-      <div class="row">
-        <div class="col">
-          
-        </div>
-        <div class="col">
-          <a href="#" class="fa fa-facebook" style="margin-right: 30px;">   Facebook</a>
-          <a href="#" class="fa fa-twitter" style="margin-right: 30px;">    Twitter</a>
-        </div>
-        <div class="col">
-          
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          
-        </div>
-        <div class="col">
-          <div id="sb-search" class="search">
-            <form>
-              <input class="search-input"  type="search" placeholder="Search..." aria-label="Search">
-              <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
-        </div>
-        <div class="col">
-          <div class="user-section">
-            {% if user.is_authenticated %}
-              <a href="#">{{user.first_name}} {{user.last_name}}</a>
-              <a href="{% url 'logout' %}">Log out</a>
-            {% else %}
-              <a href="{% url 'signup' %}" style="margin-right: 2em;">Signup</a>
-              <a href="{% url 'login' %}" style="margin-right: 2em;">Login</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-
+  
+  
     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
 
     {% block content %}
@@ -144,49 +159,11 @@
       .footer-copyright {
         color: white;
       }
-      .flex-box-banner {
-        background-color: black;
-        color: white;
-        width: 100%;
-        height: 300px;
-        text-align: center;
-        display: flexbox;
+      .navbar-expand-md .navbar-nav .dropdown-menu {
+        position: absolute !important;
       }
-      .title {
-        font-size: 100px;
-        color: white;
-        text-decoration: none;
-      }
-      .title a:hover, a:link, a:visited, a:active {
-        text-decoration: none;
-        color: white;
-      }
-      .search-input {
-        top:0;
-        right:0;
-        border:0;
-        outline:0;
-        font-size: 30px;
-        background-color: black;
-        color: white;
-      }
-      .btn-search {
-        top:0;
-        right:0;
-        border:0;
-        outline: none;
-        font-size: 30px;
-        background-color: black;
-        color: white;
-        width: 50px;
-        height: 30px;
-        border: none;
-        outline: 0 !important;
-      }
-      .user-section {
-        font-size: 30px;
-        
-      }
+      
+
     </style>
 
 </html>
