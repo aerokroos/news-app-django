@@ -1,7 +1,6 @@
-{% extends 'news/main.html' %}
+{% extends 'news/news_home.html' %}
 
 {% block content %}
-
 {% for article in articles %}
     <br>
     <div class="article-box">
@@ -43,6 +42,7 @@
         </div>
     </div>
 {% endfor %}
+
 <style>
     .article-box {
         border: 5px solid whitesmoke;
@@ -83,4 +83,7 @@
     }
     
 </style>
-{% endblock %}
+
+
+
+{% endblock content %}

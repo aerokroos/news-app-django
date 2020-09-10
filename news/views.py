@@ -16,6 +16,8 @@ class NewsPageView(ListView):
         comment['comments'] = Comment.objects.all()
         return comment
 
+    
+
 class CreateCommentPageView(CreateView):
     model = Comment
     template_name = 'news/news_home.html'
@@ -44,6 +46,15 @@ class CreateArticlePageView(CreateView):
     def form_valid(self, form):
         form.instance.article_reporter = self.request.user
         return super().form_valid(form)
+
+class PoliticsPageView(ListView):
+    context_object_name = 'articles'
+    template_name = 'news/politics.html'
+    
+    def get_queryset(self):
+        return Article.objects.filter(section__name_section__contains='Politics') 
+        
+
 
 
     
