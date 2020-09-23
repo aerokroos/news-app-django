@@ -59,6 +59,16 @@ class EducationPageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Education')
 
+class SportsPageView(ListView):
+    context_object_name = 'articles'
+    template_name = 'news/sports.html'
+    
+    def get_queryset(self):
+        return Article.objects.filter(section__name_section__contains='Sports')
+
+
+
+
 
 
         

@@ -20,6 +20,7 @@ class Reporter(models.Model):
     
 class Section(models.Model):
     name_section = models.CharField(max_length=30)
+    image = models.ImageField(upload_to = 'icons/', null=True, blank=True)
 
     def __str__(self):
         return self.name_section.title()
