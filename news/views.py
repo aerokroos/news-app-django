@@ -50,7 +50,17 @@ class PoliticsPageView(ListView):
     template_name = 'news/politics.html'
     
     def get_queryset(self):
-        return Article.objects.filter(section__name_section__contains='Politics') 
+        return Article.objects.filter(section__name_section__contains='Politics')
+
+class EducationPageView(ListView):
+    context_object_name = 'articles'
+    template_name = 'news/education.html'
+    
+    def get_queryset(self):
+        return Article.objects.filter(section__name_section__contains='Education')
+
+
+
         
 
 

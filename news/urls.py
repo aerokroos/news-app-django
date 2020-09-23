@@ -7,6 +7,9 @@ urlpatterns = [
     path('signup/', views.SignupCreatePage.as_view(), name='signup'),
     path('new_reporter/', views.CreateReporterPageView.as_view(), name='new_reporter'),
     path('new_article/', views.CreateArticlePageView.as_view(), name='new_article'),
+    path('education/', views.EducationPageView.as_view(), name='education'),
+    
     path('politics/', views.PoliticsPageView.as_view(), name='politics'),
+    
     
 ]
