@@ -16,8 +16,6 @@ class NewsPageView(ListView):
         comment['comments'] = Comment.objects.all()
         return comment
 
-    
-
 class CreateCommentPageView(CreateView):
     model = Comment
     template_name = 'news/news_home.html'

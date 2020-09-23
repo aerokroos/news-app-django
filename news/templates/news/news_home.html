@@ -1,86 +1,76 @@
 {% extends 'news/main.html' %}
 
 {% block content %}
-
-{% for article in articles %}
-    <br>
-    <div class="article-box">
-        <div class="info-container">
-            <p class="article-title" href="">{{ article.title }}</p>
-            <p class="sub-title-article">{{ article.sub_title }}</p>
-            {% if article.image %}
-            <p><img src="{{article.image.url}}" class="article-img"></p>
-            {% else %}
-                <p></p>
-            {% endif %}
-            <p >{{ article.body }}</p>
-            by  <a href="{% url 'reporter_view' article.article_reporter.pk %}"><strong>{{ article.article_reporter.last_name }}</strong></a>
-            <p>Date: {{ article.pub_date }}</p>
-            <p>Section:<a href="#"><strong> {{ article.section }}</strong></a></p>
-
-        </div>
-
-        
-        <div class="card" style="width: 46.2rem;">
-        <h3 style="padding: 0.5em">Comments</h3>
-        {% if comments %}
-            <ul class="list-group list-group-flush">
-                {% for comment in comments %}
-                    {% if article.pk == comment.article_id.pk %}
-                        <div class="flex-box-commnets-section">
-                            <p class="image-comment"><img src="{{comment.author.reporter.image.url}}"></p>
-                            <div style="margin-left: 1em;">
-                                    {{comment.author.first_name}} {{comment.author.last_name}}
-                                    {{ comment.body }}
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No comments</p>
-        {% endif %}
+<br>
+<div class="container">
+<div class="wrapper">
+    {% for article in articles %}
+    <div class="new-container">
+        <div class="element">
+            <h2>{{article.title}}</h2>
+            <h5>{{article.sub_title}}</h5>
+            <img src="{{ article.image.url }}" alt="">
+            <p>{{article.body}}</p>
+            by <a class="link-reporter" href="{% url 'reporter_view' article.article_reporter.pk %}">
+                <strong>{{ article.article_reporter.first_name }} {{article.article_reporter.last_name}}
+                    <img class="avatar" src="{{ article.article_reporter.reporter.image.url}}" alt="" srcset="">
+                </strong></a>
         </div>
     </div>
-{% endfor %}
-<style>
-    .article-box {
-        border: 5px solid whitesmoke;
-        width: 750px;
-        margin-left: 3em;
-        border-radius: 30px;
-    }
-    .info-container {
-        margin-right: 1em;
-        margin-left: 1em;
-        text-align: justify;
-    }
-    .article-title {
-        color: black;
-        font-size:32px
-    }
-    .sub-title-article {
-        font-size: 20px;
-        font-style: italic;
-    }
-    .article-body {
-        font-size: 15px;
-    }
-    .article-img {
-        width: 710px;
-        height: 400px
-    }
-    .image-comment img {
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-    }
-    .flex-box-commnets-section {
-        display: flex;
-        padding: 1em;
-        text-align: justify;
-        text-justify: inter-word;
-    }
     
-</style>
+    <div>Column
+        <img src="{{ article.article_reporter.reporter.image.url}}" alt="" srcset="">
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+
+    <style>
+        /* Grid */
+        .wrapper {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            grid-gap: 1em;
+        }
+
+        .wrapper > div {
+            padding: 1em;
+        }
+        
+        .new-container {
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+            
+        }
+        .element > img {
+            width: 100%;
+            height: auto;
+        }
+
+        .element {
+            text-align: justify;
+        }
+        a:link, a:visited, a:hover, a:active {
+            color: black;
+            text-decoration: none;
+        }
+
+        .avatar {
+            height: 50px;
+            width: 50px;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            border-radius: 50%;
+            background-size: 100% auto;
+        }
+        
+
+
+
+        
+    </style>
+
+
 {% endblock %}
