@@ -1,3 +1,4 @@
+{% extends 'news/main.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,7 +6,40 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Sports</h1>
+{% block content %}
+
+<br>
+<div class="container">
+    <h1 >Sports</h1>
+<div class="wrapper">
+    {% for article in articles %}
+    <div class="new-container">
+        <div class="element">
+            <h2>{{article.title}}</h2>
+            <h5>{{article.sub_title}}</h5>
+            <img src="{{ article.image.url }}" alt="">
+            <p>{{article.body}}</p>
+
+            <div class="footer-container">
+                <a class="link-reporter" href="#">
+                    {{ article.section }}
+                        <img class="avatar" src="{{ article.section.image}}" alt="">
+                </a>
+                <a class="link-reporter" href="{% url 'reporter_view' article.article_reporter.pk %}">
+                    by {{ article.article_reporter.first_name }} {{article.article_reporter.last_name}}
+                        <img class="avatar" src="{{ article.article_reporter.reporter.image.url}}" alt="" srcset="">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        Column
+    </div>
+    {% endfor %}
     
+</div>
+
+</div>
+{% endblock %}
 </body>
 </html>
