@@ -11,6 +11,7 @@ urlpatterns = [
     path('sports/', views.SportsPageView.as_view(), name='sports'),
     path('politics/', views.PoliticsPageView.as_view(), name='politics'),
     path('science/', views.SciencePageView.as_view(), name='science'),
+    path('entertainment/', views.EntertainmentPageView.as_view(), name='entertainment'),
     
     
 ]
