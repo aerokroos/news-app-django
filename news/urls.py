@@ -12,6 +12,8 @@ urlpatterns = [
     path('politics/', views.PoliticsPageView.as_view(), name='politics'),
     path('science/', views.SciencePageView.as_view(), name='science'),
     path('entertainment/', views.EntertainmentPageView.as_view(), name='entertainment'),
+    path('technology/', views.TechnologyPageView.as_view(), name='technology'),
+    
     
     
 ]
