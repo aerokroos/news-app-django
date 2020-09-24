@@ -10,6 +10,7 @@ urlpatterns = [
     path('education/', views.EducationPageView.as_view(), name='education'),
     path('sports/', views.SportsPageView.as_view(), name='sports'),
     path('politics/', views.PoliticsPageView.as_view(), name='politics'),
+    path('science/', views.SciencePageView.as_view(), name='science'),
     
     
 ]
