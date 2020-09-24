@@ -87,6 +87,14 @@ class TechnologyPageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Technology')
 
+class EconomyPageView(ListView):
+    context_object_name = 'articles'
+    template_name = 'news/economy.html'
+    
+    def get_queryset(self):
+        return Article.objects.filter(section__name_section__contains='Economy')
+
+
 
 
 
