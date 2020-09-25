@@ -115,6 +115,13 @@ class FashionPageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Fashion')
 
+class HealthPageView(ListView):
+    context_object_name = 'articles'
+    template_name = 'news/health.html'
+    
+    def get_queryset(self):
+        return Article.objects.filter(section__name_section__contains='Health')
+
 
 
 

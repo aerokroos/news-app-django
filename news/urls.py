@@ -17,7 +17,5 @@ urlpatterns = [
     path('arts/', views.ArtsPageView.as_view(), name='arts'),
     path('weather/', views.WeatherPageView.as_view(), name='weather'),
     path('fasion/', views.FashionPageView.as_view(), name='fashion'),
-    
-    
-    
+    path('health/', views.HealthPageView.as_view(), name='health'),
 ]
