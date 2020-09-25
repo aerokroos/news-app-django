@@ -108,6 +108,13 @@ class WeatherPageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Weather')
 
+class FashionPageView(ListView):
+    context_object_name = 'articles'
+    template_name = 'news/fashion.html'
+    
+    def get_queryset(self):
+        return Article.objects.filter(section__name_section__contains='Fashion')
+
 
 
 
