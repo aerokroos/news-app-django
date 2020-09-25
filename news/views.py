@@ -94,6 +94,15 @@ class EconomyPageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Economy')
 
+class ArtsPageView(ListView):
+    context_object_name = 'articles'
+    template_name = 'news/arts.html'
+    
+    def get_queryset(self):
+        return Article.objects.filter(section__name_section__contains='Arts')
+
+
+
 
 
 

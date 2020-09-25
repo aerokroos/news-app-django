@@ -1,5 +1,6 @@
 {% load static %}
 <html>
+  <title>{% block title %} Home {% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -41,7 +42,7 @@
               More
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Arts</a>
+              <a class="dropdown-item" href="{% url 'arts' %}">Arts</a>
               <a class="dropdown-item" href="#">Weather</a>
               <a class="dropdown-item" href="#">Fashion</a>
               <a class="dropdown-item" href="#">Health</a>
