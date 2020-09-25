@@ -13,6 +13,7 @@
 <div class="container">
 <div class="wrapper">
     {% for article in articles %}
+   
     <div class="new-container">
         <div class="element">
             <h2>{{article.title}}</h2>
@@ -22,8 +23,8 @@
 
             <div class="footer-container">
                 <a class="link-reporter" href="#">
-                    {{ article.section }}
-                        <img class="avatar" src="{{ article.section.image}}" alt="">
+                    {{article.section}}
+                    <img class="avatar" src="{{article.section.image_url}}" alt="" srcset="">
                 </a>
                 <a class="link-reporter" href="{% url 'reporter_view' article.article_reporter.pk %}">
                     by {{ article.article_reporter.first_name }} {{article.article_reporter.last_name}}

@@ -25,6 +25,12 @@ class Section(models.Model):
     def __str__(self):
         return self.name_section.title()
 
+    @property
+    def image_url(self):
+        if self.image:
+            return self.image.url
+        return '#'
+
 class Article(models.Model):
     title = models.CharField(max_length=100)
     sub_title = models.CharField(max_length=100)
