@@ -26,8 +26,8 @@ class ReporterPageView(ListView):
 
 class SignupCreatePage(CreateView):
     form_class = RegisterForm
+    success_url = reverse_lazy('login')
     template_name = 'news/signup.html'
-    succes_url = reverse_lazy('login')
 
 class CreateReporterPageView(CreateView):
     model = Reporter
