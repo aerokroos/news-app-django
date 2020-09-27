@@ -1,0 +1,28 @@
+{% extends 'news/main.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <br>
+    <br>
+        <div class="container">
+            {% for result in all_search_results %}
+            <div class="card">
+                <h5 class="card-header">{{result.title}}</h5>
+                <div class="card-body">
+                  <h5 class="card-title">{{result.sub_title}}</h5>
+                  <a href="" class="btn btn-primary">More Info</a>
+                </div>
+              </div>
+            {% empty %}
+                <p>No</p>
+            {% endfor %}
+        </div>
+
+    {% endblock %}
+</body>
+</html>

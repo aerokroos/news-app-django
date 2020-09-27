@@ -18,4 +18,5 @@ urlpatterns = [
     path('weather/', views.WeatherPageView.as_view(), name='weather'),
     path('fasion/', views.FashionPageView.as_view(), name='fashion'),
     path('health/', views.HealthPageView.as_view(), name='health'),
+    path('results/', views.SearchView.as_view(), name='search'),
 ]

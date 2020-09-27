@@ -16,6 +16,27 @@ class NewsPageView(ListView):
         comment['comments'] = Comment.objects.all()
         return comment
 
+    
+class SearchView(ListView):
+    model = Article
+    template_name = 'news/search.html'
+    context_object_name = 'all_search_results'
+
+    def get_queryset(self):
+        result = super(SearchView, self).get_queryset()
+        query = self.request.GET.get('search')
+        if query:
+            title = Article.objects.filter(title__contains=query)
+            result = title
+        else:
+            result = None
+        
+        return result
+        
+
+
+
+
 class CreateCommentPageView(CreateView):
     model = Comment
     template_name = 'news/news_home.html'
@@ -121,6 +142,9 @@ class HealthPageView(ListView):
     
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Health')
+
+
+
 
 
 
