@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView
 from .models import Article, Reporter, User, Comment
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 from .forms import RegisterForm, ReporterForm, ArticleForm
 
@@ -26,16 +27,17 @@ class SearchView(ListView):
         result = super(SearchView, self).get_queryset()
         query = self.request.GET.get('search')
         if query:
-            title = Article.objects.filter(title__contains=query)
-            result = title
+            # Search 
+            search = Article.objects.filter(
+                title__contains=query) | Article.objects.filter(
+                sub_title__contains = query) | Article.objects.filter(
+                    section__name_section__contains = query)
+
+            result = search
         else:
             result = None
         
-        return result
-        
-
-
-
+        return result        
 
 class CreateCommentPageView(CreateView):
     model = Comment
