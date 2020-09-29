@@ -16,7 +16,6 @@ class NewsPageView(ListView):
         comment = super(NewsPageView, self).get_context_data(**kwargs)
         comment['comments'] = Comment.objects.all()
         return comment
-
     
 class SearchView(ListView):
     model = Article
@@ -37,7 +36,11 @@ class SearchView(ListView):
         else:
             result = None
         
-        return result        
+        return result
+
+class ArticlePageView(ListView):
+    model = Article
+    template_name = 'news/article.html'
 
 class CreateCommentPageView(CreateView):
     model = Comment

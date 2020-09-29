@@ -15,7 +15,7 @@
                 <h5 class="card-header">{{result.title}}</h5>
                 <div class="card-body">
                   <h5 class="card-title">{{result.sub_title}}</h5>
-                  <a href="" class="btn btn-primary">More Info</a>
+                  <a href="{% url 'article_view' result.pk %}" class="btn btn-primary">More Info</a>
                 </div>
               </div>
             {% empty %}
