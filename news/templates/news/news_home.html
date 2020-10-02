@@ -25,7 +25,7 @@
                     {{article.section}}
                     <img class="avatar" src="{{article.section.image_url}}" alt="" srcset="">
                 </a>
-                <a class="link-reporter" href="{% url 'reporter_view' article.article_reporter.pk %}">
+                <a class="link-reporter" href="{% url 'reporter_view' article.article_reporter.reporter.pk %}">
                     by {{ article.article_reporter.first_name }} {{article.article_reporter.last_name}}
                         <img class="avatar" src="{{ article.article_reporter.reporter.image.url}}" alt="" srcset="">
                 </a>

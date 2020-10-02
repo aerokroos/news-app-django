@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, DetailView
 from .models import Article, Reporter, User, Comment
 from django.urls import reverse_lazy
@@ -38,7 +38,7 @@ class SearchView(ListView):
         
         return result
 
-class ArticlePageView(ListView):
+class ArticlePageView(DetailView):
     model = Article
     template_name = 'news/article.html'
 
@@ -46,9 +46,10 @@ class CreateCommentPageView(CreateView):
     model = Comment
     template_name = 'news/news_home.html'
 
-class ReporterPageView(ListView):
+class ReporterPageView(DetailView):
     model = Reporter
     template_name = 'news/reporter_view.html'
+    context_object_name = 'reporter'
 
 class SignupCreatePage(CreateView):
     form_class = RegisterForm
