@@ -16,6 +16,12 @@ class NewsPageView(ListView):
         comment = super(NewsPageView, self).get_context_data(**kwargs)
         comment['comments'] = Comment.objects.all()
         return comment
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(NewsPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
     
 class SearchView(ListView):
     model = Article
@@ -37,31 +43,67 @@ class SearchView(ListView):
             result = None
         
         return result
+    
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(SearchView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class ArticlePageView(DetailView):
     model = Article
     template_name = 'news/article.html'
     context_object_name = 'article'
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(ArticlePageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
+
 class CreateCommentPageView(CreateView):
     model = Comment
     template_name = 'news/news_home.html'
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(CreateCommentPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class ReporterPageView(DetailView):
     model = Reporter
     template_name = 'news/reporter_view.html'
     context_object_name = 'reporter'
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(ReporterPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
+
 class SignupCreatePage(CreateView):
     form_class = RegisterForm
     success_url = reverse_lazy('login')
     template_name = 'news/signup.html'
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(SignupCreatePage, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class CreateReporterPageView(CreateView):
     model = Reporter
     form_class = ReporterForm
     template_name = 'news/new_reporter.html'
     success_url = reverse_lazy('news_home')
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(CreateReporterPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class CreateArticlePageView(CreateView):
     model = Article
@@ -73,12 +115,24 @@ class CreateArticlePageView(CreateView):
         form.instance.article_reporter = self.request.user
         return super().form_valid(form)
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(CreateArticlePageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
+
 class PoliticsPageView(ListView):
     context_object_name = 'articles'
     template_name = 'news/politics.html'
     
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Politics')
+    
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(PoliticsPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class EducationPageView(ListView):
     context_object_name = 'articles'
@@ -87,12 +141,24 @@ class EducationPageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Education')
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(EducationPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
+
 class SportsPageView(ListView):
     context_object_name = 'articles'
     template_name = 'news/sports.html'
     
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Sports')
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(SportsPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class SciencePageView(ListView):
     context_object_name = 'articles'
@@ -101,12 +167,24 @@ class SciencePageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Science')
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(SciencePageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
+
 class EntertainmentPageView(ListView):
     context_object_name = 'articles'
     template_name = 'news/entertainment.html'
     
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Entertainment')
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(EntertainmentPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class TechnologyPageView(ListView):
     context_object_name = 'articles'
@@ -115,12 +193,24 @@ class TechnologyPageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Technology')
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(TechnologyPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
+
 class EconomyPageView(ListView):
     context_object_name = 'articles'
     template_name = 'news/economy.html'
     
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Economy')
+    
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(EconomyPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class ArtsPageView(ListView):
     context_object_name = 'articles'
@@ -129,12 +219,24 @@ class ArtsPageView(ListView):
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Arts')
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(ArtsPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
+
 class WeatherPageView(ListView):
     context_object_name = 'articles'
     template_name = 'news/weather.html'
     
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Weather')
+    
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(WeatherPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class FashionPageView(ListView):
     context_object_name = 'articles'
@@ -142,6 +244,12 @@ class FashionPageView(ListView):
     
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Fashion')
+    
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(FashionPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 class HealthPageView(ListView):
     context_object_name = 'articles'
@@ -149,6 +257,12 @@ class HealthPageView(ListView):
     
     def get_queryset(self):
         return Article.objects.filter(section__name_section__contains='Health')
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            return super(HealthPageView, self).dispatch(*args, **kwargs)
+        except ImmediateHttpResponse as e:
+            return HttpResponseRedirect(e.response)
 
 
 
