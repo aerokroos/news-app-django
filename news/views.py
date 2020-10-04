@@ -41,6 +41,7 @@ class SearchView(ListView):
 class ArticlePageView(DetailView):
     model = Article
     template_name = 'news/article.html'
+    context_object_name = 'article'
 
 class CreateCommentPageView(CreateView):
     model = Comment

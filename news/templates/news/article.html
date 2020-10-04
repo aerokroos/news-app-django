@@ -1,11 +1,40 @@
 {% extends 'news/main.html' %}
 
-{% block content %}
-{% for article in object_list %}
-
-    <p>{{article.title}}</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-{% endfor %}
+</head>
+<body>
+{% block content %}
 
+<br>
+<div class="container">
+<div class="wrapper">
+        
+            <div class="new-container">
+                <div class="element">
+                    <h2>{{article.title}}</h2>
+                    <h5>{{article.sub_title}}</h5>
+                    <img src="{{ article.image.url }}" alt="">
+                    <p>{{article.body}}</p>
 
-{% endblock content %}  
+                    <div class="footer-container">
+                        <a class="link-reporter" href="#">
+                            {{ article.section }}
+                                <img class="avatar" src="{{ article.section.image}}" alt="">
+                        </a>
+                        <a class="link-reporter" href="{% url 'reporter_view' article.article_reporter.pk %}">
+                            by {{ article.article_reporter.first_name }} {{article.article_reporter.last_name}}
+                                <img class="avatar" src="{{ article.article_reporter.reporter.image.url}}" alt="" srcset="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+</div>
+</div>
+{% endblock %}
+</body>
+</html>
